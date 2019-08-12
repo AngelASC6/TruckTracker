@@ -1,11 +1,12 @@
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 let dataReturned
+let truck1Map = false
 //get refrences
 let container = document.getElementById("container")
 let menuButton = document.getElementById("menu_button")//initialize a conection to database
 let db = firebase.firestore();
-let truck1Map = false
+
 
 function logData(response){
     dataReturned = response.data();
@@ -22,7 +23,7 @@ function logData(response){
    function queryDatabase(collectionName,refId, code){ 
        db.collection(collectionName).doc(refId).get().then(code);
     }
-
+    
     
     
     function initMap(){
@@ -31,10 +32,10 @@ function logData(response){
         // Takes two arguments, the element to put the map onto, and an object containing some initialization parameters
         let map = new google.maps.Map(document.getElementById("map"),{
             zoom: 18,
-        center:  new google.maps.LatLng(40.727835, -74.006774) // google.maps.LatLng() creates an object containing the latitude and longitude provided, Lat is first, Lng is second
-    })
-
-    let userPosition = new google.maps.Marker({
+            center:  new google.maps.LatLng(40.727835, -74.006774) // google.maps.LatLng() creates an object containing the latitude and longitude provided, Lat is first, Lng is second
+        })
+        
+        let userPosition = new google.maps.Marker({
         position: new google.maps.LatLng(40.727835, -74.006774), 
         map: map,
         title: "idk"
@@ -45,15 +46,15 @@ function logData(response){
         map: map,
         title: "idk"
     })
-
-
+    
+    
     
     //something happens when you click on the point
     foodTruckOne.addListener('click', function () {
         if(truck1Map == false){
             console.log("working")
             queryDatabase("food trucks","AaxZ10EyYSc1u4daxN8k",truckInfo)
-            truck1Map = true
+            truck1Map = false
         }
         else{}
     });
