@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="map.css">
+</head>
+<body>
+    <div id="all">
+      <div id="map"> </div>
+      <div id= "container"></div>
+    </div>
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBqptWbOo-RNAyFmme_O1l2tqvJx30Y4IU",
+    authDomain: "trucktracker-44da7.firebaseapp.com",
+    databaseURL: "https://trucktracker-44da7.firebaseio.com",
+    projectId: "trucktracker-44da7",
+    storageBucket: "trucktracker-44da7.appspot.com",
+    messagingSenderId: "669786859293",
+    appId: "1:669786859293:web:5a146d04d133579a"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqptWbOo-RNAyFmme_O1l2tqvJx30Y4IU&callback=initMap"
+    type="text/javascript"></script>
+          
+</body>
+</html>

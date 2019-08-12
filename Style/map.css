@@ -1,0 +1,15 @@
+#container{
+    min-height: 20vh;
+    width:50%;
+    background-color: aqua
+}
+
+
+#map{
+    width:50%;
+    height: 100%;
+}
+#all{
+    display:flex;
+    height: 1000px;
+}
