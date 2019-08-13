@@ -16,3 +16,11 @@ body {
     display:flex;
     height: 620px;
 }
+
+.food_truck{
+    margin-top: 20px
+}
+
+.food_truck img{
+    width:25%
+}

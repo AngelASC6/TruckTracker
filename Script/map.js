@@ -1,12 +1,11 @@
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-let dataReturned
-let truck1Map = false
+let dataReturned;
 //get refrences
 let container = document.getElementById("container")
 let menuButton = document.getElementById("menu_button")//initialize a conection to database
 let db = firebase.firestore();
-
+// queryDatabase("food trucks","AaxZ10EyYSc1u4daxN8k",truckInfo);
 
 function logData(response){
     dataReturned = response.data();
@@ -24,13 +23,15 @@ function logData(response){
        db.collection(collectionName).doc(refId).get().then(code);
     }
     
-    
-    
+let map;
+let foodTruckOne;
+let foodTruckTwo;
+
     function initMap(){
-        //Abisheks website https://abhishekasc4.github.io/DemoDay/
+        //Abhisheks website https://abhishekasc4.github.io/DemoDay/
         // google.maps.Map() returns a map object that we can manipulate.
         // Takes two arguments, the element to put the map onto, and an object containing some initialization parameters
-        let map = new google.maps.Map(document.getElementById("map"),{
+        map = new google.maps.Map(document.getElementById("map"),{
             zoom: 18,
             center:  new google.maps.LatLng(40.727835, -74.006774) // google.maps.LatLng() creates an object containing the latitude and longitude provided, Lat is first, Lng is second
         })
@@ -41,45 +42,83 @@ function logData(response){
         title: "idk"
     })
     
-    let foodTruckOne = new google.maps.Marker({
-        position: new google.maps.LatLng(40.727323, -74.007096), 
-        map: map,
-        title: "idk"
-    })
-    
-    
-    
-    //something happens when you click on the point
-    foodTruckOne.addListener('click', function () {
-        if(truck1Map == false){
-            console.log("working")
-            queryDatabase("food trucks","AaxZ10EyYSc1u4daxN8k",truckInfo)
-            truck1Map = false
-        }
-        else{}
-    });
+    // let foodTruckOne = new google.maps.Marker({
+    //     position: new google.maps.LatLng(40.727323, -74.007096), 
+    //     map: map,
+    //     title: "idk"
+    // })
+    //Makes new food truck
+    foodTruckOne = new Truck(40.727323, -74.007096, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne")
+    foodTruckTwo = new Truck(40.728022, -74.007018,"salsa unity","E5XiaL8Rj3XYjpOEAlWI","foodTruckTwo")
+    // foodTruckOne.addInfo();
+        
 }
-function truckInfo(response){
-    let dataReturned = response.data()
-    console.log(dataReturned.name)
-    container.innerHTML += 
+
+class Truck {
+    //htmlId must be the id used in the same as the variable name (referd on line 49)
+    constructor(lat,lng, title, id,htmlId){
+        this.marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat,lng),
+            map: map,
+            title: title
+        });
+        //dat big letter/num
+        this.id = id;
+        //Firebase stuff
+        this.data = this.getData();
+        this.htmlId = htmlId;
+        
+    }
+    getData(){
+        let me = this;
+        queryDatabase("food trucks", this.id, function(response){
+            console.log('hello')
+            me.data = response.data();
+            me.addInfo();
+        })
+    }
+    addInfo(){
+        // console.log('test')
+        container.innerHTML += 
     `
-        <div class= "food_truck">
-        title: ${dataReturned.name} <br>
-        ${dataReturned.image}<br>
-        <button id="menu_button" onclick="htmlChange()">Menu</button>
-        Description: ${dataReturned.about}
+        <div class= "food_truck" id="${this.htmlId}">
+        title: ${this.data.name} <br>
+        <img src="${this.data.image}"><br>
+        Description: ${this.data.about}br
+        <button id="menu_button" onclick="${this.htmlId}.menuChange()">Menu</button>
         </div>
         `
-        let truckRefs = document.getElementsByClassName("food_truck")
-        console.log(truckRefs)
-        
     
     }
+    menuChange(){
+        let info = this.data
+        container.innerHTML = `<ul>`;
+        for(let i =0;i< info.MenuItem.length;i++){
+            container.innerHTML += `<li>${info.MenuCost[i]} ${info.MenuItem[i]}</li>`
+        }
+        container.innerHTML += `</ul>`
+        container.innerHTML += `<br> <br> <br> <button onclick = "goBack()">Go Back</button>`
+        
+        
+        
+    }
+}
 
 
-function htmlChange(divRef){
-    console.log('shabbat shalom');
-    divRef.innerHTML = ""
+function goBack(){
+    container.innerHTML = ""
+    foodTruckOne = new Truck(40.727323, -74.007096, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne")
+
     
 }
+
+
+function loadDatabase(){
+    
+        console.log("working")
+        queryDatabase("food trucks","AaxZ10EyYSc1u4daxN8k",truckInfo)
+     
+
+   
+}
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dev page</title>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBqptWbOo-RNAyFmme_O1l2tqvJx30Y4IU",
+    authDomain: "trucktracker-44da7.firebaseapp.com",
+    databaseURL: "https://trucktracker-44da7.firebaseio.com",
+    projectId: "trucktracker-44da7",
+    storageBucket: "trucktracker-44da7.appspot.com",
+    messagingSenderId: "669786859293",
+    appId: "1:669786859293:web:5a146d04d133579a"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+    </head>
+    <body>
+        <form action="text">
+            <input id="name" type="text" placeholder="Name"><br>
+            <input id ="file" type="file" name="pic" accept="image/*"><br>
+            <input id="about" type="text" placeholder="About"><br>
+            <input id="items" type="text" placeholder="Menu Items, sperated by '+'"><br>
+            <input id="cost" type="text" placeholder="Item values in relation to above"><br>
+            <button>Submit</button>
+        </form>
+
+
+
+
+
+        <script>
+            //decalre ref
+            let name = document.getElementById("name")
+            let file = document.getElementById("file")
+            let about = document.getElementById("about")
+            let items = document.getElementById("items")
+            let cost = document.getElementById("cost")
+            let button = document.querySelector("button")
+            let db = firebase.firestore()
+
+            button.onclick = function(event){
+                event.preventDefault()
+
+                db.collection("food trucks").add({
+                    name: name.value,
+                    // image: file,
+                    about: about.value,
+                    MenuItem: items.value,
+                    MenuCost: cost.value
+                })
+                .then(function(){
+					console.log("Data is stored sucesfully")
+					
+                });
+                form.value = ""
+            }
+        
+        
+        
+        
+        </script>
+    </body>
+</html>
