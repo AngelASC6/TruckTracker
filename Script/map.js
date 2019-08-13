@@ -49,8 +49,8 @@ let foodTruckArray;
     //     title: "idk"
     // })
     //Makes new food truck
-    foodTruckOne = new Truck(40.727323, -74.007096, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne")
-    foodTruckTwo = new Truck(40.728022, -74.007018,"salsa unity","0SClKwobUAnBcNV8cq0N","foodTruckTwo")
+    foodTruckOne = new Truck(40.727323, -74.007096, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne",0)
+    foodTruckTwo = new Truck(40.728022, -74.007018,"Salsa Unity","0SClKwobUAnBcNV8cq0N","foodTruckTwo", 1000)
     foodTruckArray = [foodTruckOne,foodTruckTwo]
     // foodTruckOne.addInfo();
         
@@ -58,7 +58,7 @@ let foodTruckArray;
 
 class Truck {
     //htmlId must be the id used in the same as the variable name (referd on line 49)
-    constructor(lat,lng, title, id,htmlId){
+    constructor(lat,lng, title, id,htmlId,scrollPosition){
         this.marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat,lng),
             map: map,
@@ -69,7 +69,12 @@ class Truck {
         //Firebase stuff
         this.data = this.getData();
         this.htmlId = htmlId;
-        
+        this.marker.addListener('click',function(){
+            // console.log(container.scrollTop, scrollPosition)
+            container.scrollTop = scrollPosition;
+            // console.log(container.scrollTop, scrollPosition)
+            
+        })
     }
     getData(){
         let me = this;
@@ -90,7 +95,7 @@ class Truck {
         <button id="menu_button" onclick="${this.htmlId}.menuChange()">Menu</button>
         </div>
         `
-    
+        
     }
     menuChange(){
         let info = this.data

@@ -3,6 +3,7 @@
     width:50%;
     background-color: aqua;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 body {
