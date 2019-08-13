@@ -1,9 +1,14 @@
+body{
+    overflow: hidden;
+}
 #container{
     min-height: 20vh;
     width:50%;
     background-color: aqua;
     overflow: auto;
     scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
 }
 
 body {
@@ -16,13 +21,26 @@ body {
 }
 #all{
     display:flex;
-    height: 620px;
+    height: 610px;
 }
 
 .food_truck{
-    margin-top: 20px
+    background-color: white;
+    border-radius: 25px;
+    margin: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+#truck_name{
+    font-size: 20px;
+    padding:5px;
+    text-decoration: underline;
 }
 
+#menu_button{
+    margin:10px;
+}
 .food_truck img{
-    width:25%
+    justify-content: center;
+    width:50%;
 }
