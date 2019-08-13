@@ -26,6 +26,7 @@ function logData(response){
 let map;
 let foodTruckOne;
 let foodTruckTwo;
+let foodTruckArray;
 
     function initMap(){
         //Abhisheks website https://abhishekasc4.github.io/DemoDay/
@@ -49,7 +50,8 @@ let foodTruckTwo;
     // })
     //Makes new food truck
     foodTruckOne = new Truck(40.727323, -74.007096, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne")
-    foodTruckTwo = new Truck(40.728022, -74.007018,"salsa unity","E5XiaL8Rj3XYjpOEAlWI","foodTruckTwo")
+    foodTruckTwo = new Truck(40.728022, -74.007018,"salsa unity","0SClKwobUAnBcNV8cq0N","foodTruckTwo")
+    foodTruckArray = [foodTruckOne,foodTruckTwo]
     // foodTruckOne.addInfo();
         
 }
@@ -107,7 +109,9 @@ class Truck {
 
 function goBack(){
     container.innerHTML = ""
-    foodTruckOne = new Truck(40.727323, -74.007096, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne")
+   for(let i=0;i<foodTruckArray.length; i++){
+       foodTruckArray[i].addInfo();
+   }
 
     
 }

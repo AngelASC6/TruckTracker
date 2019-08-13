@@ -56,8 +56,8 @@
                     name: name.value,
                     // image: file,
                     about: about.value,
-                    MenuItem: items.value,
-                    MenuCost: cost.value
+                    MenuItem: items.value.split("+"),
+                    MenuCost: cost.value.split("+")
                 })
                 .then(function(){
 					console.log("Data is stored sucesfully")
