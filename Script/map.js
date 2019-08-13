@@ -60,7 +60,7 @@ let foodTruckArray;
 
 class Truck {
     //htmlId must be the id used in the same as the variable name (referd on line 49)
-    constructor(lat,lng, title, id,htmlId){
+    constructor(lat,lng, title, id,htmlId,scrollPosition){
         this.marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat,lng),
             map: map,
@@ -71,6 +71,12 @@ class Truck {
         //Firebase stuff
         this.data = this.getData();
         this.htmlId = htmlId;
+        this.marker.addListener('click',function(){
+            // console.log(container.scrollTop, scrollPosition)
+            container.scrollTop = scrollPosition;
+            // console.log(container.scrollTop, scrollPosition)
+            
+        })
     }
     getData(){
         let me = this;
@@ -91,7 +97,7 @@ class Truck {
         <button id="menu_button" onclick="${this.htmlId}.menuChange()">Menu</button>
         </div>
         `
-    
+        
     }
     menuChange(){
         let info = this.data
