@@ -28,11 +28,16 @@
     <body>
         <form action="text">
             <input id="name" type="text" placeholder="Name" ><br>
-            <input id ="file" type="file" name="pic" accept="image/*"><br>
-            <input id="about" type="text" placeholder="About" style="height: 200px; width: 300px;"><br>
+            <!-- <div id="file_upload">
+                <input id ="file" type="file" name="pic" accept="image/*"><br>
+                <button id="upload">Confirm File</button>
+            </div> -->
+            <img id ="image" src="_" alt="" style="width: 50px;">
+            <textarea id="about" type="textarea" rows="10" cols="30" placeholder="About" ></textarea><br>
             <input id="items" type="text" placeholder="Menu Items, sperated by '+'" style="width:300px"><br>
             <input id="cost" type="text" placeholder="Item values in relation to above" style="width:300px"><br>
-            <button>Submit</button>
+            <button id="submit">Submit</button>
+            <div id="Finished"></div>
         </form>
 
 
@@ -42,16 +47,19 @@
         <script>
             //decalre ref
             let name = document.getElementById("name")
-            let file = document.getElementById("file")
             let about = document.getElementById("about")
             let items = document.getElementById("items")
             let cost = document.getElementById("cost")
-            let button = document.querySelector("button")
+            let endDiv = document.getElementById("Finished")
+            let button = document.getElementById("submit")
             let db = firebase.firestore()
 
             button.onclick = function(event){
                 event.preventDefault()
-
+                if(name.value == ""|| about.value ==""||items.value == ""||cost.value ==""){
+                    alert("No input entered")
+                }
+                else{
                 db.collection("food trucks").add({
                     name: name.value,
                     // image: file,
@@ -60,12 +68,22 @@
                     MenuCost: cost.value.split("+")
                 })
                 .then(function(){
-					console.log("Data is stored sucesfully")
-					
+                    name.value = ""
+                    about.value =""
+                    items.value = ""
+                    cost.value = ""
+                    endDiv.innerHTML = "<h3>Upload complete!</h3>"
+                    setTimeout(finishedUpload,1000)
+                    function finishedUpload() {
+                        endDiv.innerHTML = ""
+                    }
+
                 });
                 form.value = ""
             }
+        }
         
+            
         
         
         

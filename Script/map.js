@@ -26,6 +26,7 @@ function logData(response){
 let map;
 let foodTruckOne;
 let foodTruckTwo;
+let foodTruckThree;
 let foodTruckArray;
 
     function initMap(){
@@ -51,7 +52,8 @@ let foodTruckArray;
     //Makes new food truck
     foodTruckOne = new Truck(40.727323, -74.007096, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne")
     foodTruckTwo = new Truck(40.728022, -74.007018,"salsa unity","0SClKwobUAnBcNV8cq0N","foodTruckTwo")
-    foodTruckArray = [foodTruckOne,foodTruckTwo]
+    foodTruckThree = new Truck(40.727382, -74.007676,"Los Pollos Hermano's","LWM3o7Ei2cNJPBuRtRQK","foodTruckThree")
+    foodTruckArray = [foodTruckOne,foodTruckTwo,foodTruckThree]
     // foodTruckOne.addInfo();
         
 }
@@ -69,7 +71,6 @@ class Truck {
         //Firebase stuff
         this.data = this.getData();
         this.htmlId = htmlId;
-        
     }
     getData(){
         let me = this;
@@ -84,7 +85,7 @@ class Truck {
         container.innerHTML += 
     `
         <div class= "food_truck" id="${this.htmlId}">
-        title: ${this.data.name} <br>
+        ${this.data.name} <br>
         <img src="${this.data.image}"><br>
         Description: ${this.data.about}br
         <button id="menu_button" onclick="${this.htmlId}.menuChange()">Menu</button>
