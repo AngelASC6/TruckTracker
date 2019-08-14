@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Dev page</title>
+        <title>Truck Tracker</title>
+        <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/trucktracker-44da7.appspot.com/o/Logo%20(1).png?alt=media&token=dfca2ac1-1c2b-48b2-88a9-1c948a85b77f">
+        <link rel="stylesheet" href="style/main.css">
         <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase.js"></script>
 
@@ -32,12 +34,12 @@
                 <input id ="file" type="file" name="pic" accept="image/*"><br>
                 <button id="upload">Confirm File</button>
             </div> -->
-            <img id ="image" src="_" alt="" style="width: 50px;">
-            <textarea id="about" type="textarea" rows="10" cols="30" placeholder="About" ></textarea><br>
-            <h6 style = "margin: 10px;">Menu Items, sperated by '+'</h6>
-            <input id="items" type="text" placeholder="Menu Items, sperated by '+'" style="width:300px"><br>
-            <input id="cost" type="text" placeholder="Item values in relation to above" style="width:300px"><br>
-            <button id="submit">Submit</button>
+            <div><textarea id="about" type="textarea" rows="10" cols="30" placeholder="About" ></textarea></div>
+            <br>
+            <div><h3 style = "margin: 10px;">Menu Items, sperated by '+'</h3></div>
+            <div><input id="items" type="text" placeholder="Menu Items, sperated by '+'" style="width:300px"></div><br>
+            <div> <input id="cost" type="text" placeholder="Item values in relation to above" style="width:300px"></div><br>
+            <div><button id="submit">Submit</button></div>
             <div id="Finished"></div>
         </form>
 

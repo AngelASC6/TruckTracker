@@ -27,6 +27,7 @@ let map;
 let foodTruckOne;
 let foodTruckTwo;
 let foodTruckThree;
+let foodTruckFour;
 let foodTruckArray;
 
     function initMap(){
@@ -38,10 +39,11 @@ let foodTruckArray;
             center:  new google.maps.LatLng(40.727835, -74.006774) // google.maps.LatLng() creates an object containing the latitude and longitude provided, Lat is first, Lng is second
         })
         
+
         let userPosition = new google.maps.Marker({
         position: new google.maps.LatLng(40.727835, -74.006774), 
         map: map,
-        title: "idk"
+        title: "User Location",
     })
     
     // let foodTruckOne = new google.maps.Marker({
@@ -50,13 +52,16 @@ let foodTruckArray;
     //     title: "idk"
     // })
     //Makes new food truck
-    foodTruckOne = new Truck(40.727323, -74.007096, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne",0)
-    foodTruckTwo = new Truck(40.728022, -74.007018,"salsa unity","0SClKwobUAnBcNV8cq0N","foodTruckTwo",300)
-    foodTruckThree = new Truck(40.727382, -74.007676,"Los Pollos Hermano's","LWM3o7Ei2cNJPBuRtRQK","foodTruckThree")
-    foodTruckArray = [foodTruckOne,foodTruckTwo,foodTruckThree]
+    foodTruckOne = new Truck(40.727756, -74.007297, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne",0)
+    foodTruckTwo = new Truck(40.728022, -74.007018,"salsa unity","0SClKwobUAnBcNV8cq0N","foodTruckTwo",600)
+    foodTruckThree = new Truck(40.727382, -74.007676,"Los Pollos Hermano's","LWM3o7Ei2cNJPBuRtRQK","foodTruckThree",1100)
+    foodTruckFour = new Truck(40.727335, -74.007174,"Rafiqi's", "wW6gBGdwj4iyVUbjFCfl","foodTruckFour",1600)
+    foodTruckArray = [foodTruckOne,foodTruckTwo,foodTruckThree,foodTruckFour]
     // foodTruckOne.addInfo();
         
 }
+
+
 
 class Truck {
     //htmlId must be the id used in the same as the variable name (referd on line 49)
@@ -64,8 +69,9 @@ class Truck {
         this.marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat,lng),
             map: map,
-            title: title
+            title: title,
         });
+
         //dat big letter/num
         this.id = id;
         //Firebase stuff
@@ -93,6 +99,9 @@ class Truck {
         <div class= "food_truck" id="${this.htmlId}">
         <div id="truck_name">${this.data.name} <br></div>
         <img src="${this.data.image}"><br>
+        <br>
+        ${this.data.location}
+        <br><br>
         Description: ${this.data.about}<br>
         <button id="menu_button" onclick="${this.htmlId}.menuChange()">Menu</button>
         </div>
@@ -101,16 +110,23 @@ class Truck {
     }
     menuChange(){
         let info = this.data
-        container.innerHTML = `<ul>`;
+        let tempHTML = `
+        <div id="menu">
+        <img onclick= 'goBack()' id=back_arrow src="https://i.imgur.com/eC5QsFF.png"></img>
+        <h2>${this.data.name}</h2>
+        <ul>`;
+        console.log('before')
         for(let i =0;i< info.MenuItem.length;i++){
-            container.innerHTML += `<li>${info.MenuCost[i]} ${info.MenuItem[i]}</li>`
+            console.log('during')
+            tempHTML += `<li id="list">${info.MenuCost[i]} ${info.MenuItem[i]}</li><br>`
         }
-        container.innerHTML += `</ul>`
-        container.innerHTML += `<br> <br> <br> <button onclick = "goBack()">Go Back</button>`
-        
+        console.log('after')
+        tempHTML += `</ul></div>`
+        container.innerHTML = tempHTML;
         
         
     }
+    
 }
 
 

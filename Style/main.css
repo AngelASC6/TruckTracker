@@ -1,0 +1,17 @@
+html {
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/trucktracker-44da7.appspot.com/o/grey.jpg?alt=media&token=c73196ea-ecec-463e-8d75-2f6bd1194b66");
+}
+body{
+    display: flex;
+    justify-content: center;
+    
+    /* background-image: url("grey.jpg"); */
+}
+
+form{
+    margin-top:100px
+}
+
+input{
+    margin:10px
+}

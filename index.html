@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Style/style.css">
+    <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/trucktracker-44da7.appspot.com/o/Logo%20(1).png?alt=media&token=dfca2ac1-1c2b-48b2-88a9-1c948a85b77f">
+    <title>Truck Tracker</title>
+</head>
+<body>
+        
+        <div class="container">
+                <h1 class="logo"></h1>
+          
+                <nav>
+                  <ul>
+                    <li id="home"><a href="">Home</a></li>
+                    <li><a href="#About1">About</a></li>
+                    <li><a href="trucks.html" target="_blank">Map</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                  </ul>
+                </nav>
+              </div>
+     <div id="name">
+             <h1>Truck Trackers</h1>
+             <!-- <img id="Logo" src="images/Logo (1).png"> -->
+
+                
+    </div>
+
+    <div id="trucks">
+      <img id="foodt" src = https://i.imgur.com/o2j7QAb.jpg">
+      <div id="menuButtons">
+        <button onclick="window.open('vendor.html')"  id="menu" class="buttons" target="_blank">Vendor registration</button>
+        <button onclick="window.open('trucks.html')"  id="map" class="buttons" target="_blank">Trucks near you</button>
+      </div>
+    </div>
+        
+              
+
+
+              
+
+<!-- <form id="location">
+        Enter Location:<input type="text" placeholder="Enter adress" maxlength="10" id="boxtext">
+        <button id="find">Find Trucks</button>
+      
+
+    </form> -->
+
+    <script>
+      let image = document.getElementById("foodt");
+      let counter = 0;
+      function changeImage () {
+          if(counter == 0) {
+              image.src = "https://i.imgur.com/9kjxyI3.jpg";
+          }
+          else if (counter == 1) {
+              image.src = "https://i.imgur.com/ozkhotH.jpg";
+          }
+          else if (counter == 2) {
+              image.src = "https://i.imgur.com/mvE7nIr.jpg"
+          }
+          else if (counter == 3) {
+              image.src = "https://i.imgur.com/o2j7QAb.jpg"
+          }
+          else if (counter == 4) {
+            image.src = "https://i.imgur.com/dQxeiRE.jpg"
+          }
+          else if (counter == 5) {
+            image.src = "https://i.imgur.com/ZEGKXmm.jpg"
+          }
+          else if (counter == 6) {
+            image.src = "https://i.imgur.com/JZIPtoZ.jpg"
+            counter = -1;
+          }
+          counter += 1;
+          setTimeout(changeImage, 1800);
+      }
+      changeImage();
+  </script>
+
+</body>
+</html>

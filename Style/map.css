@@ -1,15 +1,3 @@
-body{
-    overflow: hidden;
-}
-#container{
-    min-height: 20vh;
-    width:50%;
-    background-color: aqua;
-    overflow: auto;
-    scroll-behavior: smooth;
-    display: flex;
-    flex-direction: column;
-}
 
 body {
     margin: 0px;
@@ -21,26 +9,149 @@ body {
 }
 #all{
     display:flex;
-    height: 610px;
+    height: 547px;
 }
 
+
+.food_truck img{
+    width:25%
+}
+button{
+ background-color: aliceblue;
+ color: black;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} */
+
+body{
+    overflow: hidden;
+}
+#container{
+    min-height: 20vh;
+    width:50%;
+    background-color: #E6E9EC;
+    overflow: auto;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+}
+body {
+    margin: 0px;
+}
+#map{
+    width:50%;
+    height: 100%;
+}
 .food_truck{
     background-color: white;
     border-radius: 25px;
+    border: 2px solid gray;
     margin: 20px;
     margin-top: 20px;
     text-align: center;
+    margin-top: 20px;
+    padding:20px;
 }
 #truck_name{
     font-size: 20px;
-    padding:5px;
+    margin:20px;
+    margin-bottom:30px;
     text-decoration: underline;
+    
 }
-
 #menu_button{
     margin:10px;
+    cursor: pointer; 
 }
 .food_truck img{
     justify-content: center;
     width:50%;
+}
+
+#list{
+    font-size: 150%;
+}
+
+#menu{
+    background-color: white;
+    background-color: white;
+    border-radius: 25px;
+    border: 2px solid gray;
+    margin: 20px;
+    margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
+    padding:20px;
+    font-size: 20px;
+}
+#menu h2{
+    text-decoration: underline;
+}
+#back_arrow{
+    display: flex;
+    width:40px;
+    position: relative;
+    justify-content: flex-start;
+    cursor: pointer; 
+}
+
+/* Header css */
+.container1 {
+   display: flex;
+   justify-content: center;
+   position: relative;
+   /* position: absolute; */
+   /* border: 5px solid crimson; */
+}
+header {
+ background: #c9d1ce;
+}
+header::after {
+ content: '';
+ display: table;
+ clear: both;
+}
+.logo {
+ float: left;
+ padding: 10px 0;
+}
+nav {
+ float: right;
+ font-weight: 800;
+
+}
+nav ul {
+ margin: 0;
+ padding: 0;
+ list-style: none;
+}
+nav li {
+ display: inline-block;
+ margin-left: 70px;
+ padding-top: 23px;
+ position: relative;
+}
+nav a {
+ color: black;
+ text-decoration: none;
+ text-transform: uppercase;
+ font-size: 14px;
+}
+#map_head a{
+    color: crimson;
+}
+nav a:hover {
+ color: crimson;
+}
+nav a::before {
+ content: '';
+ display: block;
+ height: 5px;
+ background-color: crimson;
+ position: absolute;
+ top: 0;
+ width: 0%;
+ transition: all ease-in-out 250ms;
+}
+nav a:hover::before {
+ width: 100%;
 }
