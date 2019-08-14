@@ -88,7 +88,7 @@ body {
 }
 #back_arrow{
     display: flex;
-    width:40px;
+    width:30px;
     position: relative;
     justify-content: flex-start;
     cursor: pointer; 

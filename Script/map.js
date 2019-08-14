@@ -1,6 +1,7 @@
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 let dataReturned;
+let menuOn = false
 //get refrences
 let container = document.getElementById("container")
 let menuButton = document.getElementById("menu_button")//initialize a conection to database
@@ -78,6 +79,10 @@ class Truck {
         this.data = this.getData();
         this.htmlId = htmlId;
         this.marker.addListener('click',function(){
+            if(menuOn == true){
+                goBack();
+                container.scrollTop = scrollPosition;
+            }
             // console.log(container.scrollTop, scrollPosition)
             container.scrollTop = scrollPosition;
             // console.log(container.scrollTop, scrollPosition)
@@ -110,6 +115,7 @@ class Truck {
     }
     menuChange(){
         let info = this.data
+        menuOn = true
         let tempHTML = `
         <div id="menu">
         <img onclick= 'goBack()' id=back_arrow src="https://i.imgur.com/eC5QsFF.png"></img>
