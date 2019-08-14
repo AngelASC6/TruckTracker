@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Truck Tracker</title>
+        <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/trucktracker-44da7.appspot.com/o/Logo%20(1).png?alt=media&token=dfca2ac1-1c2b-48b2-88a9-1c948a85b77f">
+        <link rel="stylesheet" href="style/main.css">
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBqptWbOo-RNAyFmme_O1l2tqvJx30Y4IU",
+    authDomain: "trucktracker-44da7.firebaseapp.com",
+    databaseURL: "https://trucktracker-44da7.firebaseio.com",
+    projectId: "trucktracker-44da7",
+    storageBucket: "trucktracker-44da7.appspot.com",
+    messagingSenderId: "669786859293",
+    appId: "1:669786859293:web:5a146d04d133579a"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+    </head>
+    <body>
+        <form action="text">
+            <input id="name" type="text" placeholder="Name" ><br>
+            <!-- <div id="file_upload">
+                <input id ="file" type="file" name="pic" accept="image/*"><br>
+                <button id="upload">Confirm File</button>
+            </div> -->
+            <div><textarea id="about" type="textarea" rows="10" cols="30" placeholder="About" ></textarea></div>
+            <br>
+            <div><h3 style = "margin: 10px;">Menu Items, sperated by '+'</h3></div>
+            <div><input id="items" type="text" placeholder="Menu Items, sperated by '+'" style="width:300px"></div><br>
+            <div> <input id="cost" type="text" placeholder="Item values in relation to above" style="width:300px"></div><br>
+            <div><button id="submit">Submit</button></div>
+            <div id="Finished"></div>
+        </form>
+
+
+
+
+
+        <script>
+            //decalre ref
+            let name = document.getElementById("name")
+            let about = document.getElementById("about")
+            let items = document.getElementById("items")
+            let cost = document.getElementById("cost")
+            let endDiv = document.getElementById("Finished")
+            let button = document.getElementById("submit")
+            let db = firebase.firestore()
+
+            button.onclick = function(event){
+                event.preventDefault()
+                if(name.value == ""|| about.value ==""||items.value == ""||cost.value ==""){
+                    alert("No input entered")
+                }
+                else{
+                db.collection("food trucks").add({
+                    name: name.value,
+                    // image: file,
+                    about: about.value,
+                    MenuItem: items.value.split("+"),
+                    MenuCost: cost.value.split("+")
+                })
+                .then(function(){
+                    name.value = ""
+                    about.value =""
+                    items.value = ""
+                    cost.value = ""
+                    endDiv.innerHTML = "<h3>Upload complete!</h3>"
+                    setTimeout(finishedUpload,1000)
+                    function finishedUpload() {
+                        endDiv.innerHTML = ""
+                    }
+
+                });
+                form.value = ""
+            }
+        }
+        
+            
+        
+        
+        
+        </script>
+    </body>
+</html>
