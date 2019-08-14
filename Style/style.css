@@ -32,6 +32,12 @@ header::after {
 
 nav {
   float: right;
+  
+  
+}
+.container{
+  background-color: rgba(255,255,255,.8);
+  padding-bottom:20px;
 }
 
 nav ul {
@@ -49,7 +55,7 @@ nav li {
 }
 
 nav a {
-  color: white;
+  color: black;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 14px;
@@ -76,17 +82,19 @@ nav a:hover::before {
   width: 100%;
 }
 #name{
-    font-family: 'Courier New', Courier, monospace;
-    color: white;
     display: flex;
+    position: absolute;;
     justify-content: center;
+    background-color: rgba(255,255,255,.0);
+    margin-top:150px;
+    margin-left:480px;
+    margin-right:300px;
     /* width: auto;
     height: 500px; */
-    
-    
-  
 }
-
+#name img{
+  width:300px
+}
 #location{
     font-family: 'Courier New', Courier, monospace;
 
@@ -177,13 +185,15 @@ nav a:hover::before {
  .buttons{
   z-index: 1;
   position: absolute;
-  height: 10%;
-  width: 10%;
+  height: 11%;
+  width: 13%;
   font-family: 'Courier New', Courier, monospace;
   color: aliceblue;
   background-color: #2d3c48;
   cursor: pointer; 
- 
+  margin-left:5px;
+  margin-right: 5px;
+  margin-top:200px;
  }
  /* #menu{
   top:80%;
@@ -201,7 +211,7 @@ nav a:hover::before {
 }
 #menuButtons button{
   position: initial;
-  width: 100px;
+  width: 125px;
   height: 50px;
 }
 
