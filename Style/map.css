@@ -20,7 +20,7 @@ button{
  background-color: aliceblue;
  color: black;
  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-} */
+}
 
 body{
     overflow: hidden;
@@ -59,8 +59,14 @@ body {
     
 }
 #menu_button{
+    length:1000px;
     margin:10px;
     cursor: pointer; 
+    border: 1px solid gray;
+    border-radius:25px;
+    padding:10px;
+    padding-top: 5px;
+    padding-bottom:5px;
 }
 .food_truck img{
     justify-content: center;

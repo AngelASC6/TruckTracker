@@ -53,10 +53,10 @@ let foodTruckArray;
     //     title: "idk"
     // })
     //Makes new food truck
-    foodTruckOne = new Truck(40.727756, -74.007297, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne",0)
-    foodTruckTwo = new Truck(40.728022, -74.007018,"salsa unity","0SClKwobUAnBcNV8cq0N","foodTruckTwo",600)
-    foodTruckThree = new Truck(40.727382, -74.007676,"Los Pollos Hermano's","LWM3o7Ei2cNJPBuRtRQK","foodTruckThree",1100)
-    foodTruckFour = new Truck(40.727335, -74.007174,"Rafiqi's", "wW6gBGdwj4iyVUbjFCfl","foodTruckFour",1600)
+    foodTruckOne = new Truck(40.727756, -74.007297, "Yankee Doodle Dandy's", "AaxZ10EyYSc1u4daxN8k","foodTruckOne",25)
+    foodTruckTwo = new Truck(40.728022, -74.007018,"salsa unity","0SClKwobUAnBcNV8cq0N","foodTruckTwo",625)
+    foodTruckThree = new Truck(40.727382, -74.007676,"Los Pollos Hermano's","LWM3o7Ei2cNJPBuRtRQK","foodTruckThree",1125)
+    foodTruckFour = new Truck(40.727335, -74.007174,"Rafiqi's", "wW6gBGdwj4iyVUbjFCfl","foodTruckFour",1625)
     foodTruckArray = [foodTruckOne,foodTruckTwo,foodTruckThree,foodTruckFour]
     // foodTruckOne.addInfo();
         
